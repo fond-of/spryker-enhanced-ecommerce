@@ -7,18 +7,18 @@ use Spryker\Yves\Kernel\Container;
 
 class EnhancedEcommerceDependencyProvider extends AbstractBundleDependencyProvider
 {
-    public const DATALAYER_EXPANDER_PLUGINS = 'DATALAYER_EXPANDER_PLUGINS';
-    public const TWIG_PARAMETER_BAG_EXPANDER_PLUGINS = 'TWIG_PARAMETER_BAG_EXPANDER_PLUGINS';
+    public const ENHNACED_ECOMMERCE_DATALAYER_EXPANDER_PLUGINS = 'ENHNACED_ECOMMERCE_DATALAYER_EXPANDER_PLUGINS';
+    public const ENHNACED_ECOMMERCE_TWIG_PARAMETER_BAG_EXPANDER_PLUGINS = 'ENHNACED_ECOMMERCE_DATALAYER_EXPANDER_PLUGINS';
 
     /**
-     * @param Container $container
+     * @param \Spryker\Yves\Kernel\Container $container
      *
-     * @return Container
+     * @return \Spryker\Yves\Kernel\Container
      */
     public function provideDependencies(Container $container): Container
     {
-        $container = $this->addDataLayerExpanderPlugins($container);
-        $container = $this->addTwigParameterBagExpanderPlugins($container);
+        $container = $this->addEnhancedEcommerceDataLayerExpanderPlugins($container);
+        $container = $this->addEnhancedEcommerceTwigParameterBagExpanderPlugins($container);
 
         return $container;
     }
@@ -28,19 +28,19 @@ class EnhancedEcommerceDependencyProvider extends AbstractBundleDependencyProvid
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addDataLayerExpanderPlugins(Container $container): Container
+    protected function addEnhancedEcommerceDataLayerExpanderPlugins(Container $container): Container
     {
-        $container->set(static::DATALAYER_EXPANDER_PLUGINS, function () {
-            return $this->getDataLayerExpanderPlugins();
+        $container->set(static::ENHNACED_ECOMMERCE_DATALAYER_EXPANDER_PLUGINS, function () {
+            return $this->getEnhancedEcommerceDataLayerExpanderPlugins();
         });
 
         return $container;
     }
 
     /**
-     * @return array
+     * @return \FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceDataLayerExpanderPluginInterface[]
      */
-    protected function getDataLayerExpanderPlugins(): array
+    protected function getEnhancedEcommerceDataLayerExpanderPlugins(): array
     {
         return [];
     }
@@ -50,19 +50,19 @@ class EnhancedEcommerceDependencyProvider extends AbstractBundleDependencyProvid
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addTwigParameterBagExpanderPlugins(Container $container): Container
+    protected function addEnhancedEcommerceTwigParameterBagExpanderPlugins(Container $container): Container
     {
-        $container->set(static::TWIG_PARAMETER_BAG_EXPANDER_PLUGINS, function () {
-            return $this->getTwigParameterBagExpanderPlugins();
+        $container->set(static::ENHNACED_ECOMMERCE_TWIG_PARAMETER_BAG_EXPANDER_PLUGINS, function () {
+            return $this->getEnhancedEcommerceTwigParameterBagExpanderPlugins();
         });
 
         return $container;
     }
 
     /**
-     * @return array
+     * @return \FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceTwigParameterBagExpanderPluginInterface[]
      */
-    protected function getTwigParameterBagExpanderPlugins(): array
+    protected function getEnhancedEcommerceTwigParameterBagExpanderPlugins(): array
     {
         return [];
     }

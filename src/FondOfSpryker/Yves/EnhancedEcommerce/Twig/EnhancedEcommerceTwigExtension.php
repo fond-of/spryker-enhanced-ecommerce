@@ -18,7 +18,9 @@ class EnhancedEcommerceTwigExtension extends AbstractTwigExtensionPlugin
      */
     public function getFunctions(): array
     {
-        return [];
+        return [
+            $this->createEnhancedEcommerceFunction(),
+        ];
     }
 
     /**
