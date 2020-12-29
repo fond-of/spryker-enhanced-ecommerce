@@ -3,6 +3,7 @@
 namespace FondOfSpryker\Yves\EnhancedEcommerce\Twig;
 
 use Spryker\Yves\Twig\Plugin\AbstractTwigExtensionPlugin;
+use Symfony\Component\HttpFoundation\Request;
 use Twig\Environment;
 use Twig_SimpleFunction;
 
@@ -45,14 +46,20 @@ class EnhancedEcommerceTwigExtension extends AbstractTwigExtensionPlugin
      *
      * @return string
      */
-    public function renderEnhancedEcommerce(Environment $twig, $page, $params): string
+    public function renderEnhancedEcommerce(Environment $twig, string $page, Request $request, array $twigVariableBag): string
     {
         $dataLayerVariables = [];
 
-        foreach ($this->getFactory()->getTwigParameterBagExpanderPlugins() as $twigVariableBagExpanderPlugin) {
+        foreach ($this->getFactory()->getEnhancedEcommerceTwigParameterBagExpanderPlugins() as $twigVariableBagExpanderPlugin) {
+            if ($twigVariableBagExpanderPlugin->isApplicable($page, $twigVariableBag)) {
+                $twigVariableBag = $twigVariableBagExpanderPlugin->expand($twigVariableBag);
+            }
         }
 
-        foreach ($this->getFactory()->getDataLayerExpanderPlugins() as $type => $dataLayerExpanderPlugin) {
+        foreach ($this->getFactory()->getEnhancedEcommerceDataLayerExpanderPlugins() as $dataLayerExpanderPlugin) {
+            if ($dataLayerExpanderPlugin->isApplicable($page, $twigVariableBag)) {
+                $dataLayerVariables = $dataLayerExpanderPlugin->expand($page, $twigVariableBag, $dataLayerVariables);
+            }
         }
 
         return $twig->render($this->getDataLayerTemplateName(), [

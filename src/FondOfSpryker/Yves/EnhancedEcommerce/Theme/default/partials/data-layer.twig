@@ -1,3 +1,4 @@
 <script>
-    var dataLayer = [({{ data|json_encode() | raw }})]
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({{ data | json_encode() | raw }});
 </script>

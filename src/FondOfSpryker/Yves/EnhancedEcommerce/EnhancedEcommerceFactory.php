@@ -16,17 +16,17 @@ class EnhancedEcommerceFactory extends AbstractFactory
     }
 
     /**
-     * @return array
+     * @return \FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceDataLayerExpanderPluginInterface[]
      */
-    public function getDataLayerExpanderPlugins(): array
+    public function getEnhancedEcommerceDataLayerExpanderPlugins(): array
     {
         return $this->getProvidedDependency(EnhancedEcommerceDependencyProvider::ENHNACED_ECOMMERCE_DATALAYER_EXPANDER_PLUGINS);
     }
 
     /**
-     * @return array
+     * @return \FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceTwigParameterBagExpanderPluginInterface[]
      */
-    public function getTwigParameterBagExpanderPlugins(): array
+    public function getEnhancedEcommerceTwigParameterBagExpanderPlugins(): array
     {
         return $this->getProvidedDependency(EnhancedEcommerceDependencyProvider::ENHNACED_ECOMMERCE_TWIG_PARAMETER_BAG_EXPANDER_PLUGINS);
     }
