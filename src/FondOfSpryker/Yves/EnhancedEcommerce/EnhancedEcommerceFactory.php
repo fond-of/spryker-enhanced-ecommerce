@@ -14,7 +14,7 @@ class EnhancedEcommerceFactory extends AbstractFactory
      */
     public function getDataLayerExpanderPlugins(): array
     {
-        return $this->getProvidedDependency(EnhancedEcommerceDependencyProvider::ENHNACED_ECOMMERCE_DATALAYER_EXPANDER_PLUGINS);
+        return $this->getProvidedDependency(EnhancedEcommerceDependencyProvider::FOS_ENHNACED_ECOMMERCE_DATALAYER_EXPANDER_PLUGINS);
     }
 
     /**
@@ -22,7 +22,7 @@ class EnhancedEcommerceFactory extends AbstractFactory
      */
     public function getTwigParameterBagExpanderPlugins(): array
     {
-        return $this->getProvidedDependency(EnhancedEcommerceDependencyProvider::ENHNACED_ECOMMERCE_TWIG_PARAMETER_BAG_EXPANDER_PLUGINS);
+        return $this->getProvidedDependency(EnhancedEcommerceDependencyProvider::FOS_ENHNACED_ECOMMERCE_TWIG_PARAMETER_BAG_EXPANDER_PLUGINS);
     }
 
     /**
@@ -31,6 +31,6 @@ class EnhancedEcommerceFactory extends AbstractFactory
      */
     public function getRendererPlugins(): array
     {
-        return $this->getProvidedDependency(EnhancedEcommerceDependencyProvider::ENHNACED_ECOMMERCE_RENDERER_PLUGINS);
+        return $this->getProvidedDependency(EnhancedEcommerceDependencyProvider::FOS_ENHNACED_ECOMMERCE_RENDERER_PLUGINS);
     }
 }
