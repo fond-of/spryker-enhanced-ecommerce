@@ -58,12 +58,12 @@ class EnhancedEcommerceTwigExtension extends AbstractTwigExtensionPlugin
 
         foreach ($this->getFactory()->getEnhancedEcommerceDataLayerExpanderPlugins() as $dataLayerExpanderPlugin) {
             if ($dataLayerExpanderPlugin->isApplicable($page, $twigVariableBag)) {
-                $dataLayerString.= $dataLayerExpanderPlugin->expand($twig, $page, $twigVariableBag, $dataLayerString);
+                $dataLayerString .= $dataLayerExpanderPlugin->expand($twig, $page, $twigVariableBag, $dataLayerString);
             }
         }
 
         return $twig->render($this->getDataLayerTemplateName(), [
-            'dataLayerString' => $dataLayerString
+            'dataLayerString' => $dataLayerString,
         ]);
     }
 
