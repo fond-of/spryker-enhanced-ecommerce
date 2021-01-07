@@ -48,22 +48,30 @@ class EnhancedEcommerceTwigExtension extends AbstractTwigExtensionPlugin
      */
     public function renderEnhancedEcommerce(Environment $twig, string $page, Request $request, array $twigVariableBag): string
     {
-        $dataLayerString = '';
+        $renderedJavascript = '';
+        $dataLayer = [];
 
-        foreach ($this->getFactory()->getEnhancedEcommerceTwigParameterBagExpanderPlugins() as $twigVariableBagExpanderPlugin) {
+        foreach ($this->getFactory()->getTwigParameterBagExpanderPlugins() as $twigVariableBagExpanderPlugin) {
             if ($twigVariableBagExpanderPlugin->isApplicable($page, $twigVariableBag)) {
                 $twigVariableBag = $twigVariableBagExpanderPlugin->expand($twigVariableBag);
             }
         }
 
-        foreach ($this->getFactory()->getEnhancedEcommerceDataLayerExpanderPlugins() as $dataLayerExpanderPlugin) {
+        foreach ($this->getFactory()->getDataLayerExpanderPlugins() as $dataLayerExpanderPlugin) {
             if ($dataLayerExpanderPlugin->isApplicable($page, $twigVariableBag)) {
-                $dataLayerString .= $dataLayerExpanderPlugin->expand($twig, $page, $twigVariableBag, $dataLayerString);
+                $dataLayer[] = $dataLayerExpanderPlugin->expand($page, $twigVariableBag, $dataLayer);
+            }
+        }
+
+        foreach ($this->getFactory()->getRendererPlugins() as $dataLayerExpanderPlugin) {
+            if ($dataLayerExpanderPlugin->isApplicable($page, $twigVariableBag)) {
+                $renderedJavascript .= $dataLayerExpanderPlugin->render($twig, $page, $twigVariableBag);
             }
         }
 
         return $twig->render($this->getDataLayerTemplateName(), [
-            'dataLayerString' => $dataLayerString,
+            'dataLayer' => $dataLayer,
+            'javascript' => $renderedJavascript,
         ]);
     }
 

@@ -1,5 +1,6 @@
 <script>
     window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({{ dataLayer | json_encode() | raw }});
 
-    {{ dataLayerString|raw }}
+    {{ javascript|raw }}
 </script>
