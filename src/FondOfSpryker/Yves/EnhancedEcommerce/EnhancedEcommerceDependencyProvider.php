@@ -9,6 +9,7 @@ class EnhancedEcommerceDependencyProvider extends AbstractBundleDependencyProvid
 {
     public const ENHNACED_ECOMMERCE_DATALAYER_EXPANDER_PLUGINS = 'ENHNACED_ECOMMERCE_DATALAYER_EXPANDER_PLUGINS';
     public const ENHNACED_ECOMMERCE_TWIG_PARAMETER_BAG_EXPANDER_PLUGINS = 'ENHNACED_ECOMMERCE_TWIG_PARAMETER_BAG_EXPANDER_PLUGINS';
+    public const ENHNACED_ECOMMERCE_CONTROLLER_EVENT_HANDLER = 'ENHNACED_ECOMMERCE_CONTROLLER_EVENT_HANDLER';
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
@@ -63,6 +64,28 @@ class EnhancedEcommerceDependencyProvider extends AbstractBundleDependencyProvid
      * @return \FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceTwigParameterBagExpanderPluginInterface[]
      */
     protected function getEnhancedEcommerceTwigParameterBagExpanderPlugins(): array
+    {
+        return [];
+    }
+
+    /**
+     * @param Container $container
+     *
+     * @return Container
+     */
+    protected function addControllerEventHandler(Container $container): Container
+    {
+        $container->set(static::ENHNACED_ECOMMERCE_CONTROLLER_EVENT_HANDLER, function () {
+            return $this->getControllerEventHandler();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @return array
+     */
+    protected function getControllerEventHandler(): array
     {
         return [];
     }

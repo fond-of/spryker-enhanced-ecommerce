@@ -48,7 +48,7 @@ class EnhancedEcommerceTwigExtension extends AbstractTwigExtensionPlugin
      */
     public function renderEnhancedEcommerce(Environment $twig, string $page, Request $request, array $twigVariableBag): string
     {
-        $dataLayerVariables = [];
+        $dataLayerString = '';
 
         foreach ($this->getFactory()->getEnhancedEcommerceTwigParameterBagExpanderPlugins() as $twigVariableBagExpanderPlugin) {
             if ($twigVariableBagExpanderPlugin->isApplicable($page, $twigVariableBag)) {
@@ -58,12 +58,12 @@ class EnhancedEcommerceTwigExtension extends AbstractTwigExtensionPlugin
 
         foreach ($this->getFactory()->getEnhancedEcommerceDataLayerExpanderPlugins() as $dataLayerExpanderPlugin) {
             if ($dataLayerExpanderPlugin->isApplicable($page, $twigVariableBag)) {
-                $dataLayerVariables = $dataLayerExpanderPlugin->expand($page, $twigVariableBag, $dataLayerVariables);
+                $dataLayerString.= $dataLayerExpanderPlugin->expand($twig, $page, $twigVariableBag, $dataLayerString);
             }
         }
 
         return $twig->render($this->getDataLayerTemplateName(), [
-            'data' => $dataLayerVariables,
+            'dataLayerString' => $dataLayerString
         ]);
     }
 
