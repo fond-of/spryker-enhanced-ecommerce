@@ -2,8 +2,6 @@
 
 namespace FondOfSpryker\Yves\EnhancedEcommerce;
 
-use FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceRenderePluginInterface;
-use FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceRendererInterface;
 use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Yves\Kernel\Container;
 
@@ -37,7 +35,7 @@ class EnhancedEcommerceDependencyProvider extends AbstractBundleDependencyProvid
     }
 
     /**
-     * @return EnhancedEcommerceRenderePluginInterface[]
+     * @return \FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceRenderePluginInterface[]
      */
     protected function getRendererPlugins(): array
     {

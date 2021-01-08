@@ -2,9 +2,6 @@
 
 namespace FondOfSpryker\Yves\EnhancedEcommerce;
 
-use FondOfSpryker\Yves\EnhancedEcommerce\Twig\EnhancedEcommerceTwigExtension;
-use FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceRenderePluginInterface;
-use FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceRendererInterface;
 use Spryker\Yves\Kernel\AbstractFactory;
 
 class EnhancedEcommerceFactory extends AbstractFactory
@@ -26,8 +23,7 @@ class EnhancedEcommerceFactory extends AbstractFactory
     }
 
     /**
-     * @return EnhancedEcommerceRenderePluginInterface[]
-     * @throws \Spryker\Yves\Kernel\Exception\Container\ContainerKeyNotFoundException
+     * @return \FondOfSpryker\Yves\EnhancedEcommerceExtension\Dependency\EnhancedEcommerceRenderePluginInterface[]
      */
     public function getRendererPlugins(): array
     {

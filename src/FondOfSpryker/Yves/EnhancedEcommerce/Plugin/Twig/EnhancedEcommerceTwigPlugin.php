@@ -2,31 +2,30 @@
 
 namespace FondOfSpryker\Yves\EnhancedEcommerce\Plugin\Twig;
 
-use Silex\Application;
-use Silex\ServiceProviderInterface;
+use FondOfSpryker\Shared\EnhancedEcommerce\EnhancedEcommerceConstants;
 use Spryker\Service\Container\ContainerInterface;
 use Spryker\Shared\TwigExtension\Dependency\Plugin\TwigPluginInterface;
 use Spryker\Yves\Kernel\AbstractPlugin;
 use Twig\Environment;
 use Twig\TwigFunction;
-use Twig_Environment;
 
 /**
  * @method \FondOfSpryker\Yves\EnhancedEcommerce\EnhancedEcommerceFactory getFactory()
  */
 class EnhancedEcommerceTwigPlugin extends AbstractPlugin implements TwigPluginInterface
 {
-    public const TWIG_FUNCTION_ENHANCED_ECOMMERCE = 'enhancedEcommerce';
+    public const NEEDS_CONTEXT = 'needs_context';
 
     /**
      * Specification:
      * - Allows to extend Twig with additional functionality (e.g. functions, global variables, etc.).
      *
+     * @api
+     *
      * @param \Twig\Environment $twig
      * @param \Spryker\Service\Container\ContainerInterface $container
      *
      * @return \Twig\Environment
-     * @api
      */
     public function extend(Environment $twig, ContainerInterface $container): Environment
     {
@@ -34,15 +33,15 @@ class EnhancedEcommerceTwigPlugin extends AbstractPlugin implements TwigPluginIn
     }
 
     /**
-     * @param Environment $twig
-     * @param ContainerInterface $container
+     * @param \Twig\Environment $twig
+     * @param \Spryker\Service\Container\ContainerInterface $container
      *
-     * @return Environment
+     * @return \Twig\Environment
      */
     protected function registerEnhancedEcommerceTwigFunction(Environment $twig, ContainerInterface $container): Environment
     {
         $twig->addFunction(
-            new TwigFunction(static::TWIG_FUNCTION_ENHANCED_ECOMMERCE, null, ['needs_context' => true])
+            new TwigFunction(EnhancedEcommerceConstants::TWIG_FUNCTION_ENHANCED_ECOMMERCE, null, [static::NEEDS_CONTEXT => true])
         );
     }
 }
