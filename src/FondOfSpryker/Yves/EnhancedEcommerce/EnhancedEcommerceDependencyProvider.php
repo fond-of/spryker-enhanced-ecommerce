@@ -25,9 +25,14 @@ class EnhancedEcommerceDependencyProvider extends AbstractBundleDependencyProvid
         return $container;
     }
 
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
     protected function addRendererPlugins(Container $container): Container
     {
-        $container->set(static::FOS_ENHNACED_ECOMMERCE_RENDERER_PLUGINS, function () {
+        $container->set(static::FOS_ENHNACED_ECOMMERCE_RENDERER_PLUGINS, static function () {
             return $this->getRendererPlugins();
         });
 
@@ -49,7 +54,7 @@ class EnhancedEcommerceDependencyProvider extends AbstractBundleDependencyProvid
      */
     protected function addDataLayerExpanderPlugins(Container $container): Container
     {
-        $container->set(static::FOS_ENHNACED_ECOMMERCE_DATALAYER_EXPANDER_PLUGINS, function () {
+        $container->set(static::FOS_ENHNACED_ECOMMERCE_DATALAYER_EXPANDER_PLUGINS, static function () {
             return $this->getDataLayerExpanderPlugins();
         });
 
@@ -71,7 +76,7 @@ class EnhancedEcommerceDependencyProvider extends AbstractBundleDependencyProvid
      */
     protected function addTwigParameterBagExpanderPlugins(Container $container): Container
     {
-        $container->set(static::FOS_ENHNACED_ECOMMERCE_TWIG_PARAMETER_BAG_EXPANDER_PLUGINS, function () {
+        $container->set(static::FOS_ENHNACED_ECOMMERCE_TWIG_PARAMETER_BAG_EXPANDER_PLUGINS, static function () {
             return $this->getTwigParameterBagExpanderPlugins();
         });
 
