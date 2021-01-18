@@ -82,7 +82,7 @@ class EnhancedEcommerceDependencyProvider extends AbstractBundleDependencyProvid
     {
         $self = $this;
 
-        $container->set(static::FOS_ENHNACED_ECOMMERCE_TWIG_PARAMETER_BAG_EXPANDER_PLUGINS, function () use ($self) {
+        $container->set(static::FOS_ENHNACED_ECOMMERCE_TWIG_PARAMETER_BAG_EXPANDER_PLUGINS, static function () use ($self) {
             return $self->getTwigParameterBagExpanderPlugins();
         });
 
