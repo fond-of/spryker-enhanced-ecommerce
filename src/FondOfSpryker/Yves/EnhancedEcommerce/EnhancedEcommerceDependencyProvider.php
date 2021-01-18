@@ -32,8 +32,10 @@ class EnhancedEcommerceDependencyProvider extends AbstractBundleDependencyProvid
      */
     protected function addRendererPlugins(Container $container): Container
     {
-        $container->set(static::FOS_ENHNACED_ECOMMERCE_RENDERER_PLUGINS, static function () {
-            return $this->getRendererPlugins();
+        $self = $this;
+
+        $container->set(static::FOS_ENHNACED_ECOMMERCE_RENDERER_PLUGINS, static function () use ($self) {
+            return $self->getRendererPlugins();
         });
 
         return $container;
@@ -54,8 +56,10 @@ class EnhancedEcommerceDependencyProvider extends AbstractBundleDependencyProvid
      */
     protected function addDataLayerExpanderPlugins(Container $container): Container
     {
-        $container->set(static::FOS_ENHNACED_ECOMMERCE_DATALAYER_EXPANDER_PLUGINS, static function () {
-            return $this->getDataLayerExpanderPlugins();
+        $self = $this;
+
+        $container->set(static::FOS_ENHNACED_ECOMMERCE_DATALAYER_EXPANDER_PLUGINS, static function () use ($self) {
+            return $self->getDataLayerExpanderPlugins();
         });
 
         return $container;
@@ -76,8 +80,10 @@ class EnhancedEcommerceDependencyProvider extends AbstractBundleDependencyProvid
      */
     protected function addTwigParameterBagExpanderPlugins(Container $container): Container
     {
-        $container->set(static::FOS_ENHNACED_ECOMMERCE_TWIG_PARAMETER_BAG_EXPANDER_PLUGINS, static function () {
-            return $this->getTwigParameterBagExpanderPlugins();
+        $self = $this;
+
+        $container->set(static::FOS_ENHNACED_ECOMMERCE_TWIG_PARAMETER_BAG_EXPANDER_PLUGINS, static function () use ($self) {
+            return $self->getTwigParameterBagExpanderPlugins();
         });
 
         return $container;
