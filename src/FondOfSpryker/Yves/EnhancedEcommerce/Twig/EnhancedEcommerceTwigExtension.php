@@ -41,7 +41,8 @@ class EnhancedEcommerceTwigExtension extends AbstractTwigExtensionPlugin
     /**
      * @param \Twig\Environment $twig
      * @param string $page
-     * @param array $params
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param array $twigVariableBag
      *
      * @return string
      */
@@ -58,7 +59,8 @@ class EnhancedEcommerceTwigExtension extends AbstractTwigExtensionPlugin
     }
 
     /**
-     * @param array|string $twigVariableBag
+     * @param string $page
+     * @param array $twigVariableBag
      *
      * @return array
      */
@@ -75,7 +77,6 @@ class EnhancedEcommerceTwigExtension extends AbstractTwigExtensionPlugin
 
     /**
      * @param string $page
-     * @param array $dataLayer
      * @param array $twigVariableBag
      *
      * @return array

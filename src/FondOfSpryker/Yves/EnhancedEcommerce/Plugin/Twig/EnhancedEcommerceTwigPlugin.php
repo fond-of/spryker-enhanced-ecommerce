@@ -43,5 +43,7 @@ class EnhancedEcommerceTwigPlugin extends AbstractPlugin implements TwigPluginIn
         $twig->addFunction(
             new TwigFunction(EnhancedEcommerceConstants::TWIG_FUNCTION_ENHANCED_ECOMMERCE, null, [static::NEEDS_CONTEXT => true])
         );
+
+        return $twig;
     }
 }
