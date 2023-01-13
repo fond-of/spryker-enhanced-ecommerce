@@ -6,7 +6,7 @@ use FondOfSpryker\Shared\EnhancedEcommerce\EnhancedEcommerceConstants;
 use Spryker\Yves\Twig\Plugin\AbstractTwigExtensionPlugin;
 use Symfony\Component\HttpFoundation\Request;
 use Twig\Environment;
-use Twig_SimpleFunction;
+use Twig\TwigFunction;
 
 /**
  * @method \FondOfSpryker\Yves\EnhancedEcommerce\EnhancedEcommerceFactory getFactory()
@@ -24,11 +24,11 @@ class EnhancedEcommerceTwigExtension extends AbstractTwigExtensionPlugin
     }
 
     /**
-     * @return \Twig_SimpleFunction
+     * @return \Twig\TwigFunction
      */
-    protected function createEnhancedEcommerceFunction(): Twig_SimpleFunction
+    protected function createEnhancedEcommerceFunction(): TwigFunction
     {
-        return new Twig_SimpleFunction(
+        return new TwigFunction(
             EnhancedEcommerceConstants::TWIG_FUNCTION_ENHANCED_ECOMMERCE,
             [$this, 'renderEnhancedEcommerce'],
             [
