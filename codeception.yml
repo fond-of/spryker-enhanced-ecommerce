@@ -1,4 +1,4 @@
-namespace: fond-of-spryker/google-tagmanager
+namespace: fond-of-spryker/enhanced-ecommerce
 
 suites:
   unit:
@@ -18,7 +18,7 @@ paths:
 coverage:
   enabled: true
   include:
-    - src/*.php
+    - src/FondOfSpryker/*.php
 
 modules:
   enabled:
